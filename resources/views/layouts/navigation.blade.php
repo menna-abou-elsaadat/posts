@@ -11,14 +11,14 @@
                 </div> -->
 
                 <!-- Navigation Links -->
-                <div class=" space-x-8 sm:-my-px sm:ml-10 sm:flex ">
-                    <x-nav-link :href="route('add-post')" :active="request()->routeIs('add-post')">
-                        <span style="font-size: large">{{ __('Add Post') }}</span>
-                    </x-nav-link>
-                </div>
                 <div class=" space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('post-list')" :active="request()->routeIs('post-list')">
                         <span style="font-size: large">{{ __('Posts') }}</span>
+                    </x-nav-link>
+                </div>
+                <div class=" space-x-8 sm:-my-px sm:ml-10 sm:flex ">
+                    <x-nav-link :href="route('add-post')" :active="request()->routeIs('add-post')">
+                        <span style="font-size: large">{{ __('Add Post') }}</span>
                     </x-nav-link>
                 </div>
             </div>
