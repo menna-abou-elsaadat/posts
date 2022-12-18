@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Post;
 use Auth;
+use App\Services\PostService;
 
 class PostList extends Component
 {
@@ -21,7 +22,7 @@ class PostList extends Component
     }
 
     public function deletePost($id)
-    {
-        Post::where('id',$id)->delete();
+    {   
+       PostService::deletePost($id);
     }
 }

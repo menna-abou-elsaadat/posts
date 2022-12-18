@@ -14,6 +14,17 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function accessibleComments($user)
+    {
+        return $this->comments()->where('user_id',$user->id)->get();
+    }
+
     public static function accessable($user)
     {
         if ($user->role == 'admin') {

@@ -22,6 +22,13 @@ class PostService{
 		$post->save();
 	}
 
+	public static function deletePost($id)
+	{
+		$post = Post::find($id);
+		$post->comments()->delete();
+		$post->delete();
+	}
+
 }
 
 ?>
