@@ -22,6 +22,9 @@ class Post extends Model
 
     public function accessibleComments($user)
     {
+        if ($user->role == 'admin') {
+            return $this->comments()->get();
+        }
         return $this->comments()->where('user_id',$user->id)->get();
     }
 
