@@ -16,6 +16,12 @@ class PostService{
 		return $new_post;
 	}
 
+	public static function edit($post,$post_text)
+	{
+		$post->post = $post_text;
+		$post->save();
+	}
+
 }
 
 ?>
