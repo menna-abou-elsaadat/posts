@@ -28,6 +28,15 @@ class Post extends Model
         return $this->comments()->where('user_id',$user->id)->get();
     }
 
+    public function isAccessable($user)
+    {
+        if ($user->role == 'admin' || $this->user_id == $user->id) {
+            return true;
+        }
+
+        return false;
+    }
+
     public static function accessable($user)
     {
         if ($user->role == 'admin') {

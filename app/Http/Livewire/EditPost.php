@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Post;
 use App\Services\PostService;
+use Auth;
 
 class EditPost extends Component
 {
@@ -21,9 +22,17 @@ class EditPost extends Component
 
     public function render()
     {
+        if (!$this->post->isAccessable(Auth::user())) {
+            
+             return view('error')
+                ->extends('layouts.app')
+                ->section('content');
+        }
+
         return view('livewire.edit-post')
                 ->extends('layouts.app')
                 ->section('content');
+        
     }
 
     public function submit()

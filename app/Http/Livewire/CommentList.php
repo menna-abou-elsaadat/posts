@@ -24,6 +24,12 @@ class CommentList extends Component
 
     public function render()
     {
+        if (!$this->post->isAccessable(Auth::user())) {
+            
+             return view('error')
+                ->extends('layouts.app')
+                ->section('content');
+        }
         $comments = $this->post->accessibleComments(Auth::user());
         return view('livewire.comment-list',['comments'=>$comments])
                 ->extends('layouts.app')

@@ -13,4 +13,13 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function isAccessable($user)
+    {
+        if ($user->role == 'admin' || $this->user_id == $user->id) {
+            return true;
+        }
+
+        return false;
+    }
 }

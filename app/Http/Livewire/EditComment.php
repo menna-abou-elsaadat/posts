@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Comment;
 use App\Services\CommentService;
+use Auth;
 
 class EditComment extends Component
 {
@@ -20,6 +21,11 @@ class EditComment extends Component
 
     public function render()
     {
+        if (!$this->comment->isAccessable(Auth::user())) {
+            return view('error')
+                ->extends('layouts.app')
+                ->section('content');
+        }
         return view('livewire.edit-comment')
                 ->extends('layouts.app')
                 ->section('content');
